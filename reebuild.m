@@ -1,5 +1,5 @@
 function Img = reebuild(proj)
-
+%ÖØ½¨Í¼Ïñ Î´ÂË²¨
     outSize = 2 * floor(size(proj,1) / 2 / sqrt(2));
     outCenter = floor((outSize + 1) / 2);
 
@@ -11,14 +11,14 @@ function Img = reebuild(proj)
     outy = repmat(outy,1,outSize);
 
     projSize = size(proj,1);
-    projCenter = ceil(projSize/2);
+    projCenter = ceil(projSize/2) + 1;
     Img = 0;
 
     for ii = 1:180
         projii = proj(:,ii);
         rotLim = (1:projSize) - projCenter;
         rotAxis = outx .* cos((ii-1) ./ 180 .* pi) + outy .* sin((ii-1) ./ 180 .* pi);
-        projCon = interp1(rotLim,projii,rotAxis(:));
+        projCon = interp1(rotLim,projii,rotAxis(:),'spline');
         Img = Img + reshape(projCon,outSize,outSize);
         %imshow(img,[])
     end
