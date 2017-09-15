@@ -1,5 +1,5 @@
 function [Ctr, AngleFix, Period] = reMargin(Img, AS1)
-%标定零点 角度 间距
+%鏍囧畾闆剁偣 瑙掑害 闂磋窛
     [y1,x1] = find(max(max(Img)) == Img);
     Ctr = [x1,y1];
 

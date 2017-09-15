@@ -1,5 +1,5 @@
 function phyCtrnew = Remark(Img, phyCtr, AngleFix)
-%Ðý×ªÍ¼ÐÎµ½Õý ²¢±ê¶¨Ô­µã
+% æ—‹è½¬å›¾å½¢åˆ°æ­£ å¹¶æ ‡å®šåŽŸç‚¹
     Imgg = imrotate(Img, AngleFix * 180 / pi);
 
     rotCtrori = fix((size(Img)+1)/2);

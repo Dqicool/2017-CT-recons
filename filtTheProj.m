@@ -3,7 +3,8 @@ function p = filtTheProj(p_in)
 
     % Design the filter
     len = size(p,1);
-    H = designFilter(filter, len, d);
+    H = 1:1024;
+    H = (H./1024)';
 
     p(length(H),1)=0;  % Zero pad projections
 

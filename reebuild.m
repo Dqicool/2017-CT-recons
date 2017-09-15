@@ -1,5 +1,5 @@
 function Img = reebuild(proj)
-%ÖØ½¨Í¼Ïñ Î´ÂË²¨
+%é‡å»ºå›¾åƒ æœªæ»¤æ³¢
     outSize = 2 * floor(size(proj,1) / 2 / sqrt(2));
     outCenter = floor((outSize + 1) / 2);
 
