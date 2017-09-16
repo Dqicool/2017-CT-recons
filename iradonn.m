@@ -115,22 +115,22 @@ function [img,H] = iradonn(varargin)
 
     [p,theta,filter,d,interp,N] = parse_inputs(varargin{:});
 
-    [p,H] = filterProjections(p, filter, d);  %£¡£¡£¡£¡
+    [p,H] = filterProjections(p, filter, d);  %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     % Define the x & y axes for the reconstructed image so that the origin
     % (center) is in the spot which RADON would choose.
 
-    center = floor((N + 1)/2);      %È·¶¨ÖÐÐÄÎ»ÖÃ
-    xleft = -center + 1;            %È·¶¨×ó±ßÎ»ÖÃ
-    x = (1:N) - 1 + xleft;          %È·¶¨xµÄÈ¡Öµ·¶Î§
-    x = repmat(x, N, 1);            %½«xÏòÏÂÅÅÁÐN´Î
+    center = floor((N + 1)/2);      %È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+    xleft = -center + 1;            %È·ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+    x = (1:N) - 1 + xleft;          %È·ï¿½ï¿½xï¿½ï¿½È¡Öµï¿½ï¿½Î§
+    x = repmat(x, N, 1);            %ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½
                                     %N = 2*floor(size(R,1)/(2*sqrt(2)))
-    ytop = center - 1;              %È·¶¨y×î¸ß¶¥µãÎ»ÖÃ
-    y = (N:-1:1).' - N + ytop;      %½«y»®¹éµ½-n~n
-    y = repmat(y, 1, N);            %yºáÏòÅÅÁÐn´Î
+    ytop = center - 1;              %È·ï¿½ï¿½yï¿½ï¿½ß¶ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+    y = (N:-1:1).' - N + ytop;      %ï¿½ï¿½yï¿½ï¿½ï¿½éµ½-n~n
+    y = repmat(y, 1, N);            %yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½
 
-    len = size(p,1);                %ÅÄÕÕ³¤¶È
-    ctrIdx = ceil(len/2);           %ÅÄÕÕÖÐÐÄ
+    len = size(p,1);                %ï¿½ï¿½ï¿½Õ³ï¿½ï¿½ï¿½
+    ctrIdx = ceil(len/2);           %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     % Zero pad the projections to size 1+2*ceil(N/sqrt(2)) if this
     % quantity is greater than the length of the projections
@@ -164,9 +164,9 @@ function [img,H] = iradonn(varargin)
             img = zeros(N,'like',p);        
             
             for i=1:length(theta)
-                proj = p(:,i);                                          %pµÄµÚiÁÐËùÓÐÖµ512
-                taxis = (1:size(p,1)) - ctrIdx;                         %tµÄaxisÎª-1/2ÅÄÕÕÖÐÐÄ~1/2ÅÄÕÕÖÐÐÄ
-                t = x.*costheta(i) + y.*sintheta(i);                    %¶Ôt×öÐý×ªÒ²¾ÍÊÇÈ·¶¨¹âÕÕ·½Ïò ×ø±êÏµ·½Ïò
+                proj = p(:,i);                                          %pï¿½Äµï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ512
+                taxis = (1:size(p,1)) - ctrIdx;                         %tï¿½ï¿½axisÎª-1/2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~1/2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                t = x.*costheta(i) + y.*sintheta(i);                    %ï¿½ï¿½tï¿½ï¿½ï¿½ï¿½×ªÒ²ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½
                 projContrib = interp1(taxis,proj,t(:),interp_method);   %
                 img = img + reshape(projContrib,N,N);
                 imshow(img,[])

@@ -1,5 +1,5 @@
 function Img = reebuild(proj)
-%重建图像 未滤波
+%重建图像
     outSize = 2 * floor(size(proj,1) / 2 / sqrt(2));
     outCenter = floor((outSize + 1) / 2);
 
@@ -20,6 +20,6 @@ function Img = reebuild(proj)
         rotAxis = outx .* cos((ii-1) ./ 180 .* pi) + outy .* sin((ii-1) ./ 180 .* pi);
         projCon = interp1(rotLim,projii,rotAxis(:),'spline');
         Img = Img + reshape(projCon,outSize,outSize);
-        imshow(Img,[])
+        %imshow(Img,[])
     end
 end

@@ -1,19 +1,17 @@
-function p = filtTheProj(p_in)
-    p = p_in;
+function Q = filtTheProj(p)
+    n = 0:512;
+    h = zeros(1,513);
+    h(1) = 1/4;
+    h(2:2:end) = -1./((pi*n(2:2:end)).^2);
+    h = [h, h(end-1:-1:2)];
+    H = 2 * abs(fft(h));
+    omega = 2*pi*(0:1023)/1024;
+    windows = (0.54 + 0.46 * cos(omega(2:end)/1));
+    H(2:end) = H(2:end) .* windows;
 
-    % Design the filter
-    len = size(p,1);
-    H = 1:1024;
-    H = (H./1024)';
-
-    p(length(H),1)=0;  % Zero pad projections
-
-    p = fft(p);               % p holds fft of projections
-
-    p = bsxfun(@times, p, H); % faster than for-loop
-
-    p = ifft(p,'symmetric');  % p is the filtered projections
-
-    p(len+1:end,:) = [];
-    
+    p(length(H),1)=0;
+    S = fft(p);
+    tmp = bsxfun(@times, S, H');
+    Q = ifft(tmp,'symmetric');
+    Q(513:end,:) = [];
 end
