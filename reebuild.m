@@ -20,6 +20,6 @@ function Img = reebuild(proj)
         rotAxis = outx .* cos((ii-1) ./ 180 .* pi) + outy .* sin((ii-1) ./ 180 .* pi);
         projCon = interp1(rotLim,projii,rotAxis(:),'spline');
         Img = Img + reshape(projCon,outSize,outSize);
-        %imshow(Img,[])
+        imshow(Img,[])
     end
 end
