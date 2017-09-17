@@ -5,7 +5,7 @@ function [Ctr, AngleFix, Period] = reMargin(Img, AS1)
 
     Imgg = Img(251:362,321:362);
     [y2,x2] = find(max(max(Imgg)) == Imgg);
-    Ctr2 = [x2 + 320, y2 + 251];
+    Ctr2 = [x2 + 320, y2 + 250];
 
     tantmp = (y1 - Ctr2(2))/(x1 - Ctr2(1));
     AngleFix = atan(tantmp);
