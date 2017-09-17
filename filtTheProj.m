@@ -1,4 +1,5 @@
 function Q = filtTheProj(p)
+%建立filter
     n = 0:512;
     h = zeros(1,513);
     h(1) = 1/4;

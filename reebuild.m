@@ -1,4 +1,4 @@
-function Img = reebuild(proj)
+function Img = reebuild(proj,theta0)
 %重建图像
     outSize = 2 * floor(size(proj,1) / 2 / sqrt(2));
     outCenter = floor((outSize + 1) / 2);
@@ -17,9 +17,10 @@ function Img = reebuild(proj)
     for ii = 1:180
         projii = proj(:,ii);
         rotLim = (1:projSize) - projCenter;
-        rotAxis = outx .* cos((ii-1) ./ 180 .* pi) + outy .* sin((ii-1) ./ 180 .* pi);
+        rotAxis = outx .* cos((theta0+ii-1) ./ 180 .* pi) + outy .* sin((theta0+ii-1) ./ 180 .* pi);
         projCon = interp1(rotLim,projii,rotAxis(:),'spline');
         Img = Img + reshape(projCon,outSize,outSize);
-        imshow(Img,[])
+        %imshow(Img,[])
     end
+%    Img = Img*pi/180;
 end
