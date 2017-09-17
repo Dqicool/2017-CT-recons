@@ -1,4 +1,4 @@
-function phyCtrnew = Remark(Img, phyCtr, AngleFix)
+function phyCtrnew = reMark(Img, phyCtr, AngleFix)
 % 旋转图形到正 并标定原点
     Imgg = imrotate(Img, AngleFix * 180 / pi);
 
